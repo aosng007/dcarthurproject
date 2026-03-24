@@ -1,42 +1,3 @@
-Attachment index.html added.None selected
-
-Skip to content
-Using Gmail with screen readers
-
-1 of 5,312
-dc
-Inbox
-
-Y Cheng <aosng007@gmail.com>
-Attachments
-14:19 (42 minutes ago)
-to me
-
-
-
---
-------------------------
-My email: aosng007@gmail.com
- One attachment
-  •  Scanned by Gmail
-
-Y Cheng <aosng007@gmail.com>
-14:42 (19 minutes ago)
-to me
-
-https://websites.godaddy.com/en-AU/editor/a9210d0a-a5cc-496a-a4d0-eece284d7e2f/1a1bfabe-edef-4f71-aee8-0e890a66fd7b/edit
-
-
-------------------------
-My email: aosng007@gmail.com
-
-
-On Tue, 24 Mar 2026 at 14:19, Y Cheng <aosng007@gmail.com> wrote:
-
-
---
-------------------------
-My email: aosng007@gmail.com
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -149,7 +110,15 @@ My email: aosng007@gmail.com
   }
   .nav-cta:hover { background: var(--gold-light); }
 
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
   .hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: all 0.3s; }
 
   /* ── HERO ── */
@@ -555,6 +524,8 @@ My email: aosng007@gmail.com
     gap: 0;
     margin-top: 56px;
     position: relative;
+    list-style: none;
+    padding: 0;
   }
 
   .process-grid::before {
@@ -617,6 +588,7 @@ My email: aosng007@gmail.com
     padding: 28px;
   }
   .faq-contact-card p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.65; margin-bottom: 16px; }
+  .faq-contact-card address { font-style: normal; }
   .faq-contact-card a {
     display: block;
     color: var(--gold-light);
@@ -641,6 +613,13 @@ My email: aosng007@gmail.com
     align-items: center;
     cursor: pointer;
     gap: 16px;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    font-size: inherit;
   }
 
   .faq-question h3 {
@@ -661,7 +640,6 @@ My email: aosng007@gmail.com
     font-size: 18px;
     color: var(--navy);
     line-height: 1;
-    cursor: pointer;
   }
 
   .faq-item.open .faq-toggle {
@@ -798,7 +776,7 @@ My email: aosng007@gmail.com
   .contact-left .section-title { color: #fff; }
   .contact-left .section-body { color: rgba(255,255,255,0.6); margin-top: 16px; }
 
-  .contact-details { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; }
+  .contact-details { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; font-style: normal; }
 
   .contact-item {
     display: flex;
@@ -815,6 +793,7 @@ My email: aosng007@gmail.com
   .contact-item-icon svg { width: 16px; height: 16px; stroke: var(--gold-light); fill: none; stroke-width: 1.5; }
 
   .contact-item-text .label {
+    display: block;
     font-size: 11px;
     color: rgba(255,255,255,0.4);
     letter-spacing: 0.08em;
@@ -822,6 +801,7 @@ My email: aosng007@gmail.com
     margin-bottom: 3px;
   }
   .contact-item-text .value {
+    display: block;
     font-size: 15px;
     color: #fff;
   }
@@ -1046,35 +1026,37 @@ My email: aosng007@gmail.com
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="main-nav">
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-mark">DC</div>
-    <div class="nav-logo-text">
-      <div class="name">DC Arthur Projects</div>
-      <div class="sub">Construction Management</div>
-    </div>
-  </a>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Free consultation</a>
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
+<!-- Site header containing primary navigation -->
+<header class="site-header">
+  <nav id="main-nav" aria-label="Main navigation">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark" aria-hidden="true">DC</div>
+      <div class="nav-logo-text">
+        <div class="name">DC Arthur Projects</div>
+        <div class="sub">Construction Management</div>
+      </div>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Free consultation</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-accent"></div>
+<!-- Hero section -->
+<section class="hero" id="home" aria-labelledby="hero-heading">
+  <div class="hero-bg-pattern" aria-hidden="true"></div>
+  <div class="hero-accent" aria-hidden="true"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Brisbane &amp; South East Queensland</div>
-    <h1>Construction project<br>management, <em>done right.</em></h1>
+    <p class="hero-eyebrow">Brisbane &amp; South East Queensland</p>
+    <h1 id="hero-heading">Construction project<br>management, <em>done right.</em></h1>
     <p class="hero-desc">From feasibility to handover — we manage residential, commercial, and mixed-use projects with accountability, transparency, and hands-on experience.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-gold">Get a free quote</a>
@@ -1101,43 +1083,45 @@ My email: aosng007@gmail.com
   </div>
 </section>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
+<!-- Trust / credentials bar -->
+<aside class="trust-bar" aria-label="Company credentials">
   <div class="trust-item">
-    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
     Licensed &amp; insured
   </div>
   <div class="trust-item">
-    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
     Client-side PM &amp; head contracting
   </div>
   <div class="trust-item">
-    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
     Residential &amp; commercial
   </div>
   <div class="trust-item">
-    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
     Mon–Fri, 9am–5pm
   </div>
-</div>
+</aside>
 
-<!-- ABOUT -->
-<section class="about" id="about">
+<main>
+
+<!-- About section -->
+<section class="about" id="about" aria-labelledby="about-heading">
   <div class="about-grid">
     <div class="about-left fade-up">
-      <div class="section-tag">About us</div>
-      <h2 class="section-title">Brisbane-based.<br>Project-focused.</h2>
+      <p class="section-tag">About us</p>
+      <h2 id="about-heading" class="section-title">Brisbane-based.<br>Project-focused.</h2>
       <p class="section-body">DC Arthur Projects is a construction project management and delivery firm serving South East Queensland. We bring structure, accountability, and hands-on experience to every project — whether we're managing your consultants and contractors, or delivering the works ourselves as head contractor.</p>
       <p class="section-body" style="margin-top:16px;">Our team has managed residential, commercial, and mixed-use developments across South East Queensland, providing clients with the oversight, reporting, and governance they need to stay in control.</p>
       <div class="about-cards">
-        <div class="about-card">
+        <article class="about-card">
           <h3>Client-side project management</h3>
           <p>We act as your representative on site — managing builders, consultants, contracts, costs, and reporting so you're always in control without the day-to-day stress.</p>
-        </div>
-        <div class="about-card">
+        </article>
+        <article class="about-card">
           <h3>Head contracting</h3>
           <p>Where the scope suits, we take on the role of head contractor — responsible for delivering the construction works directly, with full accountability for time, cost, and quality.</p>
-        </div>
+        </article>
       </div>
     </div>
     <div class="about-right fade-up">
@@ -1168,322 +1152,330 @@ My email: aosng007@gmail.com
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services" id="services">
+<!-- Services section -->
+<section class="services" id="services" aria-labelledby="services-heading">
   <div class="services-header fade-up">
     <div>
-      <div class="section-tag">What we do</div>
-      <h2 class="section-title">Full project lifecycle,<br>covered.</h2>
+      <p class="section-tag">What we do</p>
+      <h2 id="services-heading" class="section-title">Full project lifecycle,<br>covered.</h2>
     </div>
     <p class="section-body">We cover every stage from feasibility through to handover — so you have one consistent team managing the whole delivery.</p>
   </div>
   <div class="services-grid">
-    <div class="service-card fade-up">
-      <div class="service-num">01</div>
+    <article class="service-card fade-up">
+      <p class="service-num" aria-hidden="true">01</p>
       <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
       </div>
       <h3>Project management</h3>
       <p>Program, budget, risk tracking, consultant coordination, and regular progress reporting throughout delivery.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-num">02</div>
+    </article>
+    <article class="service-card fade-up">
+      <p class="service-num" aria-hidden="true">02</p>
       <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
       </div>
       <h3>Head contracting</h3>
       <p>End-to-end construction delivery for qualifying scopes — full accountability for time, cost, and quality.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-num">03</div>
+    </article>
+    <article class="service-card fade-up">
+      <p class="service-num" aria-hidden="true">03</p>
       <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
       </div>
       <h3>Design coordination</h3>
       <p>Architect and engineer coordination, design reviews, RFI management, and approvals submission.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-num">04</div>
+    </article>
+    <article class="service-card fade-up">
+      <p class="service-num" aria-hidden="true">04</p>
       <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       </div>
       <h3>Cost control &amp; budgeting</h3>
       <p>Concept estimates, tender management, variation control, and cost-to-complete reporting at every stage.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-num">05</div>
+    </article>
+    <article class="service-card fade-up">
+      <p class="service-num" aria-hidden="true">05</p>
       <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       </div>
       <h3>Approvals &amp; compliance</h3>
       <p>Development approvals, building approvals, and certification management across all project phases.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-num">06</div>
+    </article>
+    <article class="service-card fade-up">
+      <p class="service-num" aria-hidden="true">06</p>
       <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24"><path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
       </div>
       <h3>Handover &amp; defects</h3>
       <p>Final inspections, defects rectification, compliance documents, warranties, and structured handover packs.</p>
-    </div>
+    </article>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process" id="process">
+<!-- Process section -->
+<section class="process" id="process" aria-labelledby="process-heading">
   <div class="fade-up">
-    <div class="section-tag">How we work</div>
-    <h2 class="section-title" style="color:#fff;">From first call<br>to final handover.</h2>
+    <p class="section-tag">How we work</p>
+    <h2 id="process-heading" class="section-title" style="color:#fff;">From first call<br>to final handover.</h2>
   </div>
-  <div class="process-grid">
-    <div class="process-step fade-up">
-      <div class="step-circle">1</div>
+  <ol class="process-grid">
+    <li class="process-step fade-up">
+      <div class="step-circle" aria-hidden="true">1</div>
       <h3>Free consultation</h3>
       <p>We review your scope, site, goals, and budget — no obligation, no cost. Bring drawings or just an idea.</p>
-    </div>
-    <div class="process-step fade-up">
-      <div class="step-circle">2</div>
+    </li>
+    <li class="process-step fade-up">
+      <div class="step-circle" aria-hidden="true">2</div>
       <h3>Proposal &amp; fee</h3>
       <p>We provide a tailored proposal with fee options — fixed fee, staged, or percentage of construction cost.</p>
-    </div>
-    <div class="process-step fade-up">
-      <div class="step-circle">3</div>
+    </li>
+    <li class="process-step fade-up">
+      <div class="step-circle" aria-hidden="true">3</div>
       <h3>Planning &amp; design</h3>
       <p>Program, budget, consultant coordination, tendering, and all approval submissions managed by us.</p>
-    </div>
-    <div class="process-step fade-up">
-      <div class="step-circle">4</div>
+    </li>
+    <li class="process-step fade-up">
+      <div class="step-circle" aria-hidden="true">4</div>
       <h3>Delivery &amp; handover</h3>
       <p>Site management, weekly reporting, variation control, quality checks, and a complete handover pack.</p>
-    </div>
-  </div>
+    </li>
+  </ol>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials" id="testimonials">
+<!-- Testimonials section -->
+<section class="testimonials" id="testimonials" aria-labelledby="testimonials-heading">
   <div class="testimonials-header fade-up">
     <div>
-      <div class="section-tag">Client feedback</div>
-      <h2 class="section-title">What our clients say.</h2>
+      <p class="section-tag">Client feedback</p>
+      <h2 id="testimonials-heading" class="section-title">What our clients say.</h2>
     </div>
     <p class="testimonials-note">Replace these with your real Google Reviews — even 2–3 genuine testimonials build significant trust with new clients.</p>
   </div>
   <div class="testimonials-grid">
-    <div class="testimonial-card fade-up">
-      <div class="quote-mark">"</div>
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">DC Arthur managed our commercial fitout from start to finish. Clear communication, no surprises on cost, and delivered on time. Would not hesitate to use again.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">JM</div>
-        <div>
-          <div class="author-name">James M.</div>
-          <div class="author-role">Commercial client, Brisbane</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card featured fade-up">
-      <div class="quote-mark">"</div>
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">Having DC Arthur as our project manager gave us complete peace of mind. Weekly updates and total transparency throughout. Our project came in on budget and on schedule.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">SL</div>
-        <div>
-          <div class="author-name">Sarah L.</div>
-          <div class="author-role">Residential client, Gold Coast</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card fade-up">
-      <div class="quote-mark">"</div>
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">Professional, organised, and genuinely proactive. The cost reporting alone saved us from two potential budget blowouts. Highly recommended for any mixed-use development.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">RP</div>
-        <div>
-          <div class="author-name">R. Pearson</div>
-          <div class="author-role">Developer, Sunshine Coast</div>
-        </div>
-      </div>
-    </div>
+    <article class="testimonial-card fade-up">
+      <p class="quote-mark" aria-hidden="true">“</p>
+      <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+      <blockquote>
+        <p class="testimonial-text">DC Arthur managed our commercial fitout from start to finish. Clear communication, no surprises on cost, and delivered on time. Would not hesitate to use again.</p>
+        <footer class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">JM</div>
+          <div>
+            <p class="author-name">James M.</p>
+            <p class="author-role">Commercial client, Brisbane</p>
+          </div>
+        </footer>
+      </blockquote>
+    </article>
+    <article class="testimonial-card featured fade-up">
+      <p class="quote-mark" aria-hidden="true">“</p>
+      <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+      <blockquote>
+        <p class="testimonial-text">Having DC Arthur as our project manager gave us complete peace of mind. Weekly updates and total transparency throughout. Our project came in on budget and on schedule.</p>
+        <footer class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">SL</div>
+          <div>
+            <p class="author-name">Sarah L.</p>
+            <p class="author-role">Residential client, Gold Coast</p>
+          </div>
+        </footer>
+      </blockquote>
+    </article>
+    <article class="testimonial-card fade-up">
+      <p class="quote-mark" aria-hidden="true">“</p>
+      <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+      <blockquote>
+        <p class="testimonial-text">Professional, organised, and genuinely proactive. The cost reporting alone saved us from two potential budget blowouts. Highly recommended for any mixed-use development.</p>
+        <footer class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">RP</div>
+          <div>
+            <p class="author-name">R. Pearson</p>
+            <p class="author-role">Developer, Sunshine Coast</p>
+          </div>
+        </footer>
+      </blockquote>
+    </article>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq" id="faq">
+<!-- FAQ section -->
+<section class="faq" id="faq" aria-labelledby="faq-heading">
   <div class="faq-layout">
     <div class="faq-left fade-up">
-      <div class="section-tag">FAQ</div>
-      <h2 class="section-title">Common questions.</h2>
+      <p class="section-tag">FAQ</p>
+      <h2 id="faq-heading" class="section-title">Common questions.</h2>
       <p class="section-body">Can't find an answer? Get in touch and we'll respond within one business day.</p>
       <div class="faq-contact-card">
         <p>For project enquiries or questions not covered here, reach out directly:</p>
-        <a href="tel:0449063379">0449 063 379</a>
-        <a href="mailto:chenny@dcarthurproject.net">chenny@dcarthurproject.net</a>
+        <address>
+          <a href="tel:0449063379">0449 063 379</a>
+          <a href="mailto:chenny@dcarthurproject.net">chenny@dcarthurproject.net</a>
+        </address>
       </div>
     </div>
     <div class="faq-list fade-up">
 
       <div class="faq-item open">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="true" aria-controls="faq-a-1">
           <h3>What services do you offer?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <p class="faq-answer">We provide end-to-end project delivery: feasibility, budgeting, design coordination, approvals, procurement, construction management, and handover. We can act as your client-side project manager or as head contractor where applicable.</p>
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </button>
+        <p class="faq-answer" id="faq-a-1">We provide end-to-end project delivery: feasibility, budgeting, design coordination, approvals, procurement, construction management, and handover. We can act as your client-side project manager or as head contractor where applicable.</p>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-2">
           <h3>Can you manage a project if you're not the builder?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <p class="faq-answer">Yes. We can act as your client-side project manager, overseeing builders and consultants on your behalf, or as head contractor where applicable. We integrate seamlessly into your existing team if preferred.</p>
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </button>
+        <p class="faq-answer" id="faq-a-2">Yes. We can act as your client-side project manager, overseeing builders and consultants on your behalf, or as head contractor where applicable. We integrate seamlessly into your existing team if preferred.</p>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-3">
           <h3>Do you do residential, commercial, or both?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <p class="faq-answer">We manage and build residential, commercial, and mixed-use projects, subject to scope, location, and compliance requirements.</p>
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </button>
+        <p class="faq-answer" id="faq-a-3">We manage and build residential, commercial, and mixed-use projects, subject to scope, location, and compliance requirements.</p>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-4">
           <h3>How do you charge — fixed fee or percentage?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <p class="faq-answer">We offer options including fixed fees, staged fees, or a percentage of construction cost — depending on the scope, risk profile, and timeframes of your project. We'll recommend the best structure for your situation during the initial consultation.</p>
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </button>
+        <p class="faq-answer" id="faq-a-4">We offer options including fixed fees, staged fees, or a percentage of construction cost — depending on the scope, risk profile, and timeframes of your project. We'll recommend the best structure for your situation during the initial consultation.</p>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-5">
           <h3>What's the difference between a project manager and a builder?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <p class="faq-answer">A builder executes the physical works on site. A project manager coordinates the entire delivery process — scope definition, cost control, consultant coordination, contracts, quality oversight, and risk management. We can provide one or both roles depending on your needs.</p>
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </button>
+        <p class="faq-answer" id="faq-a-5">A builder executes the physical works on site. A project manager coordinates the entire delivery process — scope definition, cost control, consultant coordination, contracts, quality oversight, and risk management. We can provide one or both roles depending on your needs.</p>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-6">
           <h3>Can you help with design and approvals?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <p class="faq-answer">Yes. We coordinate architects and engineers through the design process and manage all approvals including development approvals (DA), building approvals (BA), and certification requirements.</p>
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </button>
+        <p class="faq-answer" id="faq-a-6">Yes. We coordinate architects and engineers through the design process and manage all approvals including development approvals (DA), building approvals (BA), and certification requirements.</p>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-7">
           <h3>How do you control cost overruns?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <p class="faq-answer">We set a clear scope early, run competitive tenders, track and approve all variations in writing, monitor procurement lead times, and provide regular cost-to-complete reporting throughout the project.</p>
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </button>
+        <p class="faq-answer" id="faq-a-7">We set a clear scope early, run competitive tenders, track and approve all variations in writing, monitor procurement lead times, and provide regular cost-to-complete reporting throughout the project.</p>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-8">
           <h3>How often will I receive updates?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <p class="faq-answer">As standard, we provide weekly or fortnightly progress reports covering program status, costs, variations, risks, and actions for the next period. You're always kept informed without having to chase us.</p>
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </button>
+        <p class="faq-answer" id="faq-a-8">As standard, we provide weekly or fortnightly progress reports covering program status, costs, variations, risks, and actions for the next period. You're always kept informed without having to chase us.</p>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-9">
           <h3>Are you licensed and insured?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <p class="faq-answer">Yes — where required, we hold the relevant licences and carry appropriate insurance including public liability and professional indemnity for project management services. Builders we engage hold construction-specific cover.</p>
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </button>
+        <p class="faq-answer" id="faq-a-9">Yes — where required, we hold the relevant licences and carry appropriate insurance including public liability and professional indemnity for project management services. Builders we engage hold construction-specific cover.</p>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-10">
           <h3>What information do you need to provide a proposal?</h3>
-          <div class="faq-toggle">+</div>
-        </div>
-        <p class="faq-answer">We'll need your site address, project goals, rough size and scope, budget range, desired timeline, any existing drawings, and any known constraints such as easements, heritage overlays, or access issues. The more you can share upfront, the better our proposal will be.</p>
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </button>
+        <p class="faq-answer" id="faq-a-10">We'll need your site address, project goals, rough size and scope, budget range, desired timeline, any existing drawings, and any known constraints such as easements, heritage overlays, or access issues. The more you can share upfront, the better our proposal will be.</p>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
+<!-- Contact section -->
+<section class="contact" id="contact" aria-labelledby="contact-heading">
   <div class="contact-grid">
     <div class="contact-left fade-up">
-      <div class="section-tag">Get in touch</div>
-      <h2 class="section-title">Let's talk about your project.</h2>
+      <p class="section-tag">Get in touch</p>
+      <h2 id="contact-heading" class="section-title">Let's talk about your project.</h2>
       <p class="section-body">Your first consultation is completely free. Tell us about your project and we'll be in touch within one business day.</p>
-      <div class="contact-details">
+      <address class="contact-details">
         <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          <div class="contact-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
           </div>
           <div class="contact-item-text">
-            <div class="label">Phone</div>
-            <div class="value"><a href="tel:0449063379">0449 063 379</a></div>
+            <span class="label">Phone</span>
+            <span class="value"><a href="tel:0449063379">0449 063 379</a></span>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <div class="contact-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
           <div class="contact-item-text">
-            <div class="label">Email</div>
-            <div class="value"><a href="mailto:chenny@dcarthurproject.net">chenny@dcarthurproject.net</a></div>
+            <span class="label">Email</span>
+            <span class="value"><a href="mailto:chenny@dcarthurproject.net">chenny@dcarthurproject.net</a></span>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div class="contact-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           </div>
           <div class="contact-item-text">
-            <div class="label">Office hours</div>
-            <div class="value">Monday – Friday, 9am – 5pm</div>
+            <span class="label">Office hours</span>
+            <span class="value">Monday – Friday, 9am – 5pm</span>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <div class="contact-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </div>
           <div class="contact-item-text">
-            <div class="label">Service area</div>
-            <div class="value">Brisbane &amp; South East Queensland</div>
+            <span class="label">Service area</span>
+            <span class="value">Brisbane &amp; South East Queensland</span>
           </div>
         </div>
-      </div>
+      </address>
     </div>
     <div class="contact-form-wrap fade-up">
       <div class="form-header">
-        <div class="free-pill">First consultation free</div>
+        <span class="free-pill">First consultation free</span>
         <h3>Send an enquiry</h3>
         <p>We'll respond within one business day.</p>
       </div>
       <form action="mailto:chenny@dcarthurproject.net" method="post" enctype="text/plain">
         <div class="form-row">
           <div class="form-group">
-            <label>First name</label>
-            <input type="text" name="firstname" placeholder="John" required>
+            <label for="firstname">First name</label>
+            <input type="text" id="firstname" name="firstname" placeholder="John" required>
           </div>
           <div class="form-group">
-            <label>Last name</label>
-            <input type="text" name="lastname" placeholder="Smith">
+            <label for="lastname">Last name</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Smith">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="john@example.com" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required>
           </div>
           <div class="form-group">
-            <label>Phone</label>
-            <input type="tel" name="phone" placeholder="04xx xxx xxx">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="04xx xxx xxx">
           </div>
         </div>
         <div class="form-row full">
           <div class="form-group">
-            <label>Project type</label>
-            <select name="project_type">
+            <label for="project_type">Project type</label>
+            <select id="project_type" name="project_type">
               <option value="">Select...</option>
               <option>Residential — new build</option>
               <option>Residential — renovation / extension</option>
@@ -1495,8 +1487,8 @@ My email: aosng007@gmail.com
         </div>
         <div class="form-row full">
           <div class="form-group">
-            <label>Tell us about your project</label>
-            <textarea name="message" placeholder="Project location, scope, budget range, timeframe..."></textarea>
+            <label for="message">Tell us about your project</label>
+            <textarea id="message" name="message" placeholder="Project location, scope, budget range, timeframe..."></textarea>
           </div>
         </div>
         <button type="submit" class="form-submit">Send enquiry →</button>
@@ -1506,32 +1498,43 @@ My email: aosng007@gmail.com
   </div>
 </section>
 
-<!-- FOOTER -->
+</main>
+
+<!-- Site footer -->
 <footer>
   <div class="footer-left">
-    <div class="footer-logo-mark">DC</div>
+    <div class="footer-logo-mark" aria-hidden="true">DC</div>
     <span class="footer-name">DC Arthur Projects</span>
   </div>
-  <div class="footer-copy">© 2026 DC Arthur Projects. All rights reserved. Brisbane, QLD.</div>
-  <div class="footer-right">
+  <p class="footer-copy">© 2026 DC Arthur Projects. All rights reserved. Brisbane, QLD.</p>
+  <nav class="footer-right" aria-label="Footer navigation">
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
-  </div>
+  </nav>
 </footer>
 
 <script>
   function toggleMenu() {
     const links = document.getElementById('nav-links');
-    links.classList.toggle('open');
+    const btn = document.getElementById('hamburger');
+    const isOpen = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
   }
 
-  function toggleFaq(el) {
-    const item = el.closest('.faq-item');
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      const q = i.querySelector('.faq-question');
+      if (q) q.setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
   }
 
   // Scroll animations
@@ -1550,10 +1553,9 @@ My email: aosng007@gmail.com
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('click', () => {
       document.getElementById('nav-links').classList.remove('open');
+      document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
     });
   });
 </script>
 </body>
 </html>
-index.html
-Displaying index.html. 
