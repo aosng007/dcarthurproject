@@ -214,27 +214,13 @@
 
     <!-- FORM WRAP -->
     <div class="contact-form-wrap fade-up">
-      <!-- Success message (hidden by default) -->
-      <div class="form-success" id="form-success">
-        <div class="form-success-icon">
-          <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-        </div>
-        <h3>Message sent!</h3>
-        <p>Thank you for getting in touch. We'll respond within one business day.</p>
-        <a href="contact.html">Send another enquiry</a>
-      </div>
 
       <!-- Contact form (Netlify Forms) -->
-      <!--
-        For Netlify hosting: the data-netlify="true" attribute enables automatic
-        form handling. For other hosts, replace with Formspree:
-          action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
-        and remove data-netlify / the hidden form-name input.
-      -->
       <form
         id="contact-form"
         name="contact"
         method="POST"
+        action="/thank-you.html"
         data-netlify="true"
         netlify-honeypot="bot-field"
         novalidate
@@ -347,14 +333,7 @@
 
   // Contact form — AJAX submit for Netlify Forms
   const contactForm = document.getElementById('contact-form');
-  const formSuccess = document.getElementById('form-success');
   const submitBtn = document.getElementById('form-submit-btn');
-
-  // Show success state if redirected back with ?success=true
-  if (window.location.search.includes('success=true')) {
-    contactForm.style.display = 'none';
-    formSuccess.style.display = 'flex';
-  }
 
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -376,17 +355,14 @@
       });
 
       if (response.ok) {
-        contactForm.style.display = 'none';
-        formSuccess.style.display = 'flex';
-        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        window.location.href = '/thank-you.html';
       } else {
         throw new Error('Server error');
       }
     } catch {
-      // Fallback: native form submit (also works for Netlify)
+      // Fallback: native form submit — Netlify will redirect to action URL
       submitBtn.textContent = 'Send enquiry →';
       submitBtn.disabled = false;
-      contactForm.setAttribute('action', '/contact.html?success=true');
       contactForm.submit();
     }
   });
