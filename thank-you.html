@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Message Sent — DC Arthur Projects | Brisbane</title>
+<meta name="description" content="Thank you for contacting DC Arthur Projects. We'll respond within one business day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">DC</div>
+    <div class="nav-logo-text">
+      <div class="name">DC Arthur Projects</div>
+      <div class="sub">Construction Management</div>
+    </div>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html#faq">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Free consultation</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mobile-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mobile-overlay-header">
+    <a href="index.html" class="mobile-overlay-logo">
+      <div class="nav-logo-mark">DC</div>
+      <div class="nav-logo-text">
+        <div class="name" style="color:#fff;">DC Arthur Projects</div>
+        <div class="sub">Construction Management</div>
+      </div>
+    </a>
+    <button class="mobile-overlay-close" id="mobile-overlay-close" aria-label="Close menu">
+      <span></span><span></span>
+    </button>
+  </div>
+  <ul class="mobile-nav-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html#faq">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="mobile-nav-cta">Free consultation</a>
+</div>
+
+<!-- SUCCESS SECTION -->
+<section class="contact" id="thank-you" style="min-height:100vh;display:flex;align-items:center;">
+  <div style="max-width:560px;margin:0 auto;text-align:center;padding:80px 24px 64px;" class="fade-up">
+    <div class="form-success-icon" style="margin:0 auto 28px;">
+      <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <div class="hero-eyebrow" style="justify-content:center;">Message sent</div>
+    <h1 style="font-size:2.4rem;margin:12px 0 16px;">Thank you for<br>getting in touch.</h1>
+    <p class="section-body" style="margin-bottom:40px;">We'll review your enquiry and respond within one business day. In the meantime, feel free to call us directly.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+      <a href="index.html" class="btn-gold">Back to home</a>
+      <a href="contact.html" class="btn-ghost">Send another enquiry</a>
+    </div>
+    <p style="margin-top:40px;color:var(--text-light);font-size:0.9rem;">
+      Or call us directly: <a href="tel:0449063379" style="color:var(--gold);">0449 063 379</a>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-logo-mark">DC</div>
+    <span class="footer-name">DC Arthur Projects</span>
+  </div>
+  <div class="footer-copy">© 2026 DC Arthur Projects. All rights reserved. Brisbane, QLD.</div>
+  <div class="footer-right">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html#faq">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const overlay = document.getElementById('mobile-overlay');
+  const closeBtn = document.getElementById('mobile-overlay-close');
+
+  function openMenu() {
+    overlay.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    overlay.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    overlay.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  closeBtn.addEventListener('click', closeMenu);
+
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
