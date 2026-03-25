@@ -44,19 +44,26 @@ h1, h2, h3, .serif {
 
 /* ── NAV ── */
 nav {
-  position: fixed;
+  position: absolute;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
+  background: transparent;
+  border-bottom: none;
   padding: 0 64px;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: all 0.3s ease;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+/* Solid nav state — used on inner pages and after scrolling past the hero */
+nav.nav-solid {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
 }
 
 .nav-logo {
@@ -75,6 +82,12 @@ nav {
   height: 56px;
   width: auto;
   object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: filter 0.4s ease;
+}
+
+nav.nav-solid .nav-logo-img {
+  filter: none;
 }
 
 .nav-links {
@@ -85,7 +98,7 @@ nav {
 }
 
 .nav-links a {
-  color: var(--text-mid);
+  color: rgba(255,255,255,0.85);
   text-decoration: none;
   font-family: 'Inter', sans-serif;
   font-size: 12px;
@@ -95,12 +108,16 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover,
-.nav-links a.active { color: var(--text); }
+.nav-links a.active { color: #fff; }
+
+nav.nav-solid .nav-links a { color: var(--text-mid); }
+nav.nav-solid .nav-links a:hover,
+nav.nav-solid .nav-links a.active { color: var(--text); }
 
 .nav-cta {
-  background: var(--text);
+  background: transparent;
   color: #fff;
-  border: none;
+  border: 1px solid rgba(255,255,255,0.6);
   padding: 11px 24px;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
@@ -108,10 +125,18 @@ nav {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, border-color 0.2s, color 0.4s;
   text-decoration: none;
 }
-.nav-cta:hover { background: #333; }
+.nav-cta:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.9); }
+
+nav.nav-solid .nav-cta {
+  background: var(--text);
+  color: #fff;
+  border-color: var(--text);
+  transition: background 0.2s, border-color 0.2s;
+}
+nav.nav-solid .nav-cta:hover { background: #333; }
 
 /* Hamburger */
 .hamburger {
@@ -126,10 +151,12 @@ nav {
 .hamburger span {
   display: block;
   width: 24px; height: 1px;
-  background: var(--text);
+  background: rgba(255,255,255,0.9);
   transition: all 0.3s ease;
   transform-origin: center;
 }
+
+nav.nav-solid .hamburger span { background: var(--text); }
 .hamburger.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
