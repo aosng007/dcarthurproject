@@ -76,13 +76,31 @@
   nav.classList.add('nav-solid');
 })();
 
-// Contact page: FAQ accordion — defined globally so HTML onclick="toggleFaq(this)" can call it
-function toggleFaq(el) {
-  var item = el.closest('.faq-item');
-  var isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(function (i) { i.classList.remove('open'); });
-  if (!isOpen) item.classList.add('open');
-}
+// Contact page: FAQ accordion — wired via JS event listeners to stay CSP-compliant
+(function () {
+  var faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  function toggleFaq(item) {
+    var isOpen = item.classList.contains('open');
+    faqItems.forEach(function (i) { i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  }
+
+  document.querySelectorAll('.faq-question').forEach(function (question) {
+    question.addEventListener('click', function () {
+      var item = question.closest('.faq-item');
+      if (item) toggleFaq(item);
+    });
+    question.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        var item = question.closest('.faq-item');
+        if (item) toggleFaq(item);
+      }
+    });
+  });
+})();
 
 // Contact page: AJAX form submission
 (function () {
