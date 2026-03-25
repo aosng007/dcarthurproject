@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Start Your Project Enquiry — DC Arthur Projects | Brisbane</title>
 <meta name="description" content="Begin your architectural project journey with DC Arthur Projects. Boutique project management and advisory for discerning homeowners in Brisbane & South East Queensland. First consultation free.">
 <!-- Open Graph -->
@@ -228,12 +230,6 @@
     <!-- FORM WRAP -->
     <div class="contact-form-wrap fade-up">
 
-      <!-- Contact form (Formspree) -->
-      <!--
-        IMPORTANT: Replace YOUR_FORM_ID below with your Formspree form ID.
-        Sign up at https://formspree.io, create a form, and paste the ID here.
-        Example: action="https://formspree.io/f/abcd1234"
-      -->
       <form
         id="contact-form"
         name="contact"
@@ -241,7 +237,6 @@
         action="https://formspree.io/f/mnjgewba"
         novalidate
       >
-        <!-- Honeypot field to deter bots (Formspree) — hidden from humans and screen readers -->
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <div class="form-header">
@@ -312,113 +307,11 @@
   </div>
 </footer>
 
-<!-- STYLE SWITCHER (temporary preview tool — remove when done) -->
 <div class="style-switcher">
   <span class="style-switcher-label">Preview theme</span>
   <button class="style-switcher-btn" id="style-switcher-btn">Switch Theme</button>
 </div>
 
-<script>
-  // Inner page — nav is always solid (no hero overlay)
-  document.getElementById('main-nav').classList.add('nav-solid');
-
-  // Mobile menu
-  const hamburger = document.getElementById('hamburger');
-  const overlay = document.getElementById('mobile-overlay');
-  const closeBtn = document.getElementById('mobile-overlay-close');
-
-  function openMenu() {
-    overlay.classList.add('open');
-    hamburger.setAttribute('aria-expanded', 'true');
-    hamburger.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    overlay.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    hamburger.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  hamburger.addEventListener('click', () => {
-    overlay.classList.contains('open') ? closeMenu() : openMenu();
-  });
-  closeBtn.addEventListener('click', closeMenu);
-
-  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-  // FAQ accordion
-  function toggleFaq(el) {
-    const item = el.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
-
-  // Contact form — AJAX submit for Formspree
-  const contactForm = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('form-submit-btn');
-
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // Basic client-side validation
-    if (!contactForm.checkValidity()) {
-      contactForm.reportValidity();
-      return;
-    }
-
-    submitBtn.textContent = 'Sending…';
-    submitBtn.disabled = true;
-
-    try {
-      const response = await fetch(contactForm.action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(contactForm)
-      });
-
-      if (response.ok) {
-        window.location.href = 'thank-you.html';
-      } else {
-        throw new Error('Server error');
-      }
-    } catch {
-      // Fallback: native form submit — Formspree will handle redirect
-      submitBtn.textContent = 'Send enquiry →';
-      submitBtn.disabled = false;
-      contactForm.submit();
-    }
-  });
-
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Style Switcher
-  (function() {
-    const sheet = document.getElementById('theme-stylesheet');
-    const btn = document.getElementById('style-switcher-btn');
-    const saved = localStorage.getItem('dcap-theme');
-    if (saved && sheet) sheet.setAttribute('href', saved);
-    function isMinimal() { return sheet && sheet.getAttribute('href').includes('minimal'); }
-    function updateBtn() { if (btn) btn.textContent = isMinimal() ? 'Switch to Corporate' : 'Switch to Minimal'; }
-    updateBtn();
-    if (btn) btn.addEventListener('click', function() {
-      sheet.setAttribute('href', isMinimal() ? 'style-corporate.css' : 'style-minimal.css');
-      localStorage.setItem('dcap-theme', sheet.getAttribute('href'));
-      updateBtn();
-    });
-  })();
-</script>
+<script src="app.js"></script>
 </body>
 </html>
