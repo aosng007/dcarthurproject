@@ -3,8 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DC Arthur Projects — Construction Project Management, Brisbane</title>
-<meta name="description" content="Brisbane-based construction project management and delivery. Residential, commercial, and mixed-use projects managed end-to-end.">
+<title>DC Arthur Projects — Luxury Architectural Project Management, Brisbane</title>
+<meta name="description" content="Boutique construction project management and advisory for discerning homeowners in Brisbane & South East Queensland. Crafting architectural excellence from concept to completion.">
+<!-- Open Graph -->
+<meta property="og:title" content="DC Arthur Projects — Crafting Architectural Excellence in Brisbane">
+<meta property="og:description" content="Boutique project management & advisory for discerning homeowners. End-to-end delivery with integrity and excellence.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dcarthurprojects.com.au/">
+<meta property="og:image" content="images/hero.png">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DC Arthur Projects — Crafting Architectural Excellence in Brisbane">
+<meta name="twitter:description" content="Boutique project management & advisory for discerning homeowners in Brisbane & South East Queensland.">
+<meta name="twitter:image" content="images/hero.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -65,10 +76,10 @@
   <div class="hero-accent"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Brisbane &amp; South East Queensland</div>
-    <h1>Construction project<br>management, <em>done right.</em></h1>
-    <p class="hero-desc">From feasibility to handover — we manage residential, commercial, and mixed-use projects with accountability, transparency, and hands-on experience.</p>
+    <h1>Crafting Architectural<br>Excellence in Brisbane.</h1>
+    <p class="hero-desc">Boutique Project Management &amp; Advisory for Discerning Homeowners.</p>
     <div class="hero-actions">
-      <a href="contact.html" class="btn-gold">Get a free quote</a>
+      <a href="contact.html" class="btn-gold">Start Your Project Enquiry</a>
       <a href="services.html" class="btn-ghost">Our services</a>
     </div>
     <div class="hero-stats">
@@ -114,7 +125,7 @@
 
 <!-- HOME INTRO -->
 <section class="home-intro">
-  <div class="section-tag">Who we are</div>
+  <div class="section-tag">Built on Integrity, Driven by Excellence.</div>
   <h2 class="section-title">Brisbane's construction<br>project management experts.</h2>
   <p class="section-body">DC Arthur Projects manages residential, commercial, and mixed-use developments across South East Queensland — from first concept to final handover.</p>
   <div class="home-intro-grid">
@@ -140,7 +151,7 @@
       </div>
       <h3>Get in Touch</h3>
       <p>Your first consultation is completely free. Tell us about your project and we'll be in touch within one business day.</p>
-      <a href="contact.html" class="intro-link">Contact us →</a>
+      <a href="contact.html" class="intro-link">Start Your Project Enquiry →</a>
     </div>
   </div>
 </section>
@@ -168,6 +179,20 @@
 </div>
 
 <script>
+  // Transparent hero nav — become solid on scroll
+  (function() {
+    const nav = document.getElementById('main-nav');
+    function updateNav() {
+      if (window.scrollY > 60) {
+        nav.classList.add('nav-solid');
+      } else {
+        nav.classList.remove('nav-solid');
+      }
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+  })();
+
   // Mobile menu
   const hamburger = document.getElementById('hamburger');
   const overlay = document.getElementById('mobile-overlay');
