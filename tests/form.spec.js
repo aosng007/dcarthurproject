@@ -73,3 +73,71 @@ test.describe('Contact form (Formspree)', () => {
     await expect(page.locator('input#email')).toHaveValue('jane@example.com');
   });
 });
+
+test.describe('Theme switcher — three-way toggle', () => {
+  test.beforeEach(async ({ page }) => {
+    // Clear localStorage so each test starts from the default (minimal) theme
+    await page.goto('/');
+    await page.evaluate(() => localStorage.removeItem('dcap-theme'));
+    await page.reload();
+  });
+
+  test('switch button is visible on the home page', async ({ page }) => {
+    await expect(page.locator('#style-switcher-btn')).toBeVisible();
+  });
+
+  test('default theme is minimal and button offers Corporate next', async ({ page }) => {
+    const btn = page.locator('#style-switcher-btn');
+    await expect(btn).toHaveText(/Corporate/i);
+    const href = await page.locator('#theme-stylesheet').getAttribute('href');
+    expect(href).toContain('minimal');
+  });
+
+  test('first click switches to Corporate theme', async ({ page }) => {
+    await page.locator('#style-switcher-btn').click();
+    const href = await page.locator('#theme-stylesheet').getAttribute('href');
+    expect(href).toContain('corporate');
+    await expect(page.locator('#style-switcher-btn')).toHaveText(/Hampton/i);
+  });
+
+  test('second click switches to Hampton theme', async ({ page }) => {
+    await page.locator('#style-switcher-btn').click(); // → Corporate
+    await page.locator('#style-switcher-btn').click(); // → Hampton
+    const href = await page.locator('#theme-stylesheet').getAttribute('href');
+    expect(href).toContain('hampton');
+    await expect(page.locator('#style-switcher-btn')).toHaveText(/Minimal/i);
+  });
+
+  test('third click cycles back to Minimal theme', async ({ page }) => {
+    await page.locator('#style-switcher-btn').click(); // → Corporate
+    await page.locator('#style-switcher-btn').click(); // → Hampton
+    await page.locator('#style-switcher-btn').click(); // → Minimal
+    const href = await page.locator('#theme-stylesheet').getAttribute('href');
+    expect(href).toContain('minimal');
+    await expect(page.locator('#style-switcher-btn')).toHaveText(/Corporate/i);
+  });
+
+  test('Hampton theme selection is persisted to localStorage', async ({ page }) => {
+    await page.locator('#style-switcher-btn').click(); // → Corporate
+    await page.locator('#style-switcher-btn').click(); // → Hampton
+    const stored = await page.evaluate(() => localStorage.getItem('dcap-theme'));
+    expect(stored).toContain('hampton');
+  });
+
+  test('Hampton theme is restored on page reload', async ({ page }) => {
+    await page.locator('#style-switcher-btn').click(); // → Corporate
+    await page.locator('#style-switcher-btn').click(); // → Hampton
+    await page.reload();
+    const href = await page.locator('#theme-stylesheet').getAttribute('href');
+    expect(href).toContain('hampton');
+  });
+
+  test('style-hampton.css file is served and contains Hampton custom properties', async ({ page }) => {
+    const response = await page.goto('/style-hampton.css');
+    expect(response.status()).toBe(200);
+    const body = await response.text();
+    expect(body).toContain('--bg: #FFFFFF');
+    expect(body).toContain('--text: #002147');
+    expect(body).toContain('--border: #D9CDC1');
+  });
+});

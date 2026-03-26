@@ -46,14 +46,26 @@
   var sheet = document.getElementById('theme-stylesheet');
   var btn = document.getElementById('style-switcher-btn');
   if (!sheet || !btn) return;
+  var themes = ['style-minimal.css', 'style-corporate.css', 'style-hampton.css'];
+  var labels = ['Minimal', 'Corporate', 'Hampton'];
   var saved = localStorage.getItem('dcap-theme');
-  if (saved) sheet.setAttribute('href', saved);
-  function isMinimal() { return sheet.getAttribute('href').includes('minimal'); }
-  function updateBtn() { btn.textContent = isMinimal() ? 'Switch to Corporate' : 'Switch to Minimal'; }
+  if (saved && themes.indexOf(saved) !== -1) sheet.setAttribute('href', saved);
+  function currentIndex() {
+    var href = sheet.getAttribute('href');
+    for (var i = 0; i < themes.length; i++) {
+      if (href === themes[i] || href.endsWith('/' + themes[i])) return i;
+    }
+    return 0;
+  }
+  function updateBtn() {
+    var next = (currentIndex() + 1) % themes.length;
+    btn.textContent = 'Switch to ' + labels[next];
+  }
   updateBtn();
   btn.addEventListener('click', function () {
-    sheet.setAttribute('href', isMinimal() ? 'style-corporate.css' : 'style-minimal.css');
-    localStorage.setItem('dcap-theme', sheet.getAttribute('href'));
+    var next = (currentIndex() + 1) % themes.length;
+    sheet.setAttribute('href', themes[next]);
+    localStorage.setItem('dcap-theme', themes[next]);
     updateBtn();
   });
 })();
