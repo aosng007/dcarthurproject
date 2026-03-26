@@ -1,0 +1,11 @@
+{
+  "name": "dcarthurproject",
+  "version": "1.0.0",
+  "description": "DC Arthur Projects – E2E tests with Playwright",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}
