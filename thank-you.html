@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io https://fonts.googleapis.com https://fonts.gstatic.com; form-action https://formspree.io">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Message Sent — DC Arthur Projects | Brisbane</title>
 <meta name="description" content="Thank you for contacting DC Arthur Projects. We'll respond within one business day.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,69 +96,11 @@
   </div>
 </footer>
 
-<!-- STYLE SWITCHER (temporary preview tool — remove when done) -->
 <div class="style-switcher">
   <span class="style-switcher-label">Preview theme</span>
   <button class="style-switcher-btn" id="style-switcher-btn">Switch Theme</button>
 </div>
 
-<script>
-  // Inner page — nav is always solid (no hero overlay)
-  document.getElementById('main-nav').classList.add('nav-solid');
-
-  // Mobile menu
-  const hamburger = document.getElementById('hamburger');
-  const overlay = document.getElementById('mobile-overlay');
-  const closeBtn = document.getElementById('mobile-overlay-close');
-
-  function openMenu() {
-    overlay.classList.add('open');
-    hamburger.setAttribute('aria-expanded', 'true');
-    hamburger.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    overlay.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    hamburger.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  hamburger.addEventListener('click', () => {
-    overlay.classList.contains('open') ? closeMenu() : openMenu();
-  });
-  closeBtn.addEventListener('click', closeMenu);
-
-  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Style Switcher
-  (function() {
-    const sheet = document.getElementById('theme-stylesheet');
-    const btn = document.getElementById('style-switcher-btn');
-    const saved = localStorage.getItem('dcap-theme');
-    if (saved && sheet) sheet.setAttribute('href', saved);
-    function isMinimal() { return sheet && sheet.getAttribute('href').includes('minimal'); }
-    function updateBtn() { if (btn) btn.textContent = isMinimal() ? 'Switch to Corporate' : 'Switch to Minimal'; }
-    updateBtn();
-    if (btn) btn.addEventListener('click', function() {
-      sheet.setAttribute('href', isMinimal() ? 'style-corporate.css' : 'style-minimal.css');
-      localStorage.setItem('dcap-theme', sheet.getAttribute('href'));
-      updateBtn();
-    });
-  })();
-</script>
+<script src="app.js"></script>
 </body>
 </html>
