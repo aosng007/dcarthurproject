@@ -27,9 +27,9 @@ Every push and pull request triggers the **E2E-Tests** GitHub Actions workflow, 
 4. Runs all Playwright end-to-end tests
 5. Uploads an HTML test report as an artifact (retained 7 days)
 
-The workflow is named **`E2E-Tests`** so it can be added to the Branch Protection rule on `main`, ensuring no code is merged unless all tests pass.
+The workflow is named **`E2E-Tests`**; in branch protection rules on `main`, the required status check will appear as **`E2E-Tests / E2E Tests`**, ensuring no code is merged unless all tests pass.
 
 ## 🔒 Branch Protection & Code Ownership
 
-- The `main` branch is protected — merging requires the **E2E-Tests** check to pass.
+- The `main` branch is protected — merging requires the **`E2E-Tests / E2E Tests`** check to pass.
 - A [CODEOWNERS](.github/CODEOWNERS) file ensures **@aosng007** must approve every pull request before it can be merged.
