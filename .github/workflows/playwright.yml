@@ -1,4 +1,4 @@
-name: Playwright E2E Tests
+name: E2E-Tests
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   e2e:
+    name: E2E Tests
     runs-on: ubuntu-latest
     permissions:
       contents: read
