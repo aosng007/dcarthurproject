@@ -6,8 +6,14 @@ module.exports = defineConfig({
   timeout: 30000,
   retries: 1,
   reporter: 'html',
+  webServer: {
+    command: 'npx http-server . -p 8080 --silent',
+    url: 'http://localhost:8080',
+    reuseExistingServer: !process.env.CI,
+    timeout: 10000,
+  },
   use: {
-    baseURL: 'https://aosng007.github.io/dcarthurproject',
+    baseURL: 'http://localhost:8080',
     headless: true,
   },
   projects: [
