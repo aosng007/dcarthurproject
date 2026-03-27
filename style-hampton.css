@@ -1,31 +1,31 @@
 /* ─────────────────────────────────────────────────────────────────────────
    DC Arthur Projects — Hampton Style Stylesheet
-   Crisp White | Deep Navy | Soft Taupe
-   Lato (headings) + Montserrat (body)
+   Warm Off-White | Teal/Soft Navy | Pastel Blue
+   Cormorant Garamond (headings) + Montserrat (body)
    ───────────────────────────────────────────────────────────────────────── */
 
 :root {
-  --bg: #FFFFFF;
-  --bg-off: #F5F2EF;
-  --text: #002147;
-  --text-mid: #3A4F63;
+  --bg: #F7F5F0;
+  --bg-off: #D1E5ED;
+  --text: #3D6A7E;
+  --text-mid: #4F4F4F;
   --text-light: #7A8FA3;
   --border: #D9CDC1;
   --border-light: #E8E0D8;
   --separator: #B8D4E8;
   /* Aliases kept for inline-style compatibility with shared HTML markup.
-     Some pages use var(--gold) in inline styles; we remap them to navy tones
+     Some pages use var(--gold) in inline styles; we remap them to teal tones
      so the Hampton palette renders correctly without altering the HTML. */
-  --navy: #002147;
-  --navy-dark: #001530;
-  --navy-mid: #1A3A5C;
-  --gold: #002147;
-  --gold-light: #1A3A5C;
-  --gold-pale: #EEF4F9;
-  --teal: #3A4F63;
-  --teal-light: #5A7A96;
-  --cream: #F5F2EF;
-  --warm-white: #FFFFFF;
+  --navy: #3D6A7E;
+  --navy-dark: #2A4F5E;
+  --navy-mid: #4E7F95;
+  --gold: #3D6A7E;
+  --gold-light: #4E7F95;
+  --gold-pale: #EEF6FA;
+  --teal: #3D6A7E;
+  --teal-light: #5A8FA5;
+  --cream: #F7F5F0;
+  --warm-white: #F7F5F0;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,15 +35,15 @@ html { scroll-behavior: smooth; }
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  color: var(--text);
+  color: var(--text-mid);
   background: var(--bg);
   line-height: 1.75;
   overflow-x: hidden;
 }
 
 h1, h2, h3, .serif {
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
 }
 
 /* ── SECTION SEPARATORS ── */
@@ -76,7 +76,7 @@ nav {
 /* Solid nav state — used on inner pages and after scrolling past the hero */
 nav.nav-solid {
   position: fixed;
-  background: rgba(255, 255, 255, 0.97);
+  background: rgba(209, 229, 237, 0.97);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 2px solid var(--separator);
@@ -285,13 +285,13 @@ nav.nav-solid .hamburger span { background: var(--text); }
 }
 .page-header .hero-eyebrow { margin-bottom: 20px; }
 .page-header h1 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(36px, 5vw, 60px);
   color: var(--text);
   line-height: 1.1;
   letter-spacing: 0.02em;
   margin-bottom: 20px;
-  font-weight: 700;
+  font-weight: 300;
 }
 .page-header p {
   font-family: 'Montserrat', sans-serif;
@@ -359,13 +359,13 @@ nav.nav-solid .hamburger span { background: var(--text); }
 }
 
 .hero h1 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(44px, 7vw, 88px);
   line-height: 1.05;
   color: #fff;
   margin-bottom: 28px;
   letter-spacing: 0.02em;
-  font-weight: 700;
+  font-weight: 300;
 }
 .hero h1 em {
   font-style: italic;
@@ -541,9 +541,9 @@ nav.nav-solid .hamburger span { background: var(--text); }
 
 .home-intro-card .service-icon-wrap { display: none; }
 .home-intro-card h3 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 300;
   color: var(--text);
   margin-bottom: 14px;
   letter-spacing: 0.02em;
@@ -592,13 +592,13 @@ section { padding: 80px 64px; }
 }
 
 .section-title {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(28px, 4vw, 48px);
   color: var(--text);
   line-height: 1.1;
   letter-spacing: 0.02em;
   margin-bottom: 24px;
-  font-weight: 700;
+  font-weight: 300;
 }
 
 .section-body {
@@ -639,9 +639,9 @@ section { padding: 80px 64px; }
 .about-card:hover { background: var(--bg-off); }
 
 .about-card h3 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 300;
   color: var(--text);
   margin-bottom: 10px;
   letter-spacing: 0.02em;
@@ -748,9 +748,9 @@ section { padding: 80px 64px; }
 .service-icon-wrap { display: none; }
 
 .service-card h3 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 300;
   color: var(--text);
   margin-bottom: 12px;
   letter-spacing: 0.02em;
@@ -827,9 +827,9 @@ section { padding: 80px 64px; }
 }
 
 .process-step h3 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 300;
   color: var(--text);
   margin-bottom: 12px;
   letter-spacing: 0.02em;
@@ -898,9 +898,9 @@ section { padding: 80px 64px; }
   gap: 16px;
 }
 .faq-question h3 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 300;
   color: var(--text);
   line-height: 1.45;
   letter-spacing: 0.01em;
@@ -1121,9 +1121,9 @@ section { padding: 80px 64px; }
   text-transform: uppercase;
 }
 .form-header h3 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 26px;
-  font-weight: 700;
+  font-weight: 300;
   color: var(--text);
   letter-spacing: 0.02em;
 }
@@ -1238,9 +1238,9 @@ section { padding: 80px 64px; }
 }
 .form-success-icon svg { width: 28px; height: 28px; stroke: var(--text); fill: none; stroke-width: 1.5; }
 .form-success h3 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 300;
   color: var(--text);
   letter-spacing: 0.02em;
 }
@@ -1279,11 +1279,11 @@ section { padding: 80px 64px; }
   border-bottom: 1px solid var(--border);
 }
 .cta-strip h2 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(24px, 3.5vw, 42px);
   color: var(--text);
   line-height: 1.15;
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: 0.02em;
 }
 
@@ -1309,7 +1309,7 @@ section { padding: 80px 64px; }
 
 /* ── FOOTER ── */
 footer {
-  background: var(--bg);
+  background: var(--bg-off);
   padding: 36px 64px;
   display: flex;
   align-items: center;
