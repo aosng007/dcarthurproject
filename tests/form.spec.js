@@ -136,8 +136,8 @@ test.describe('Theme switcher — three-way toggle', () => {
     const response = await page.goto('/style-hampton.css');
     expect(response.status()).toBe(200);
     const body = await response.text();
-    expect(body).toContain('--bg: #FFFFFF');
-    expect(body).toContain('--text: #002147');
+    expect(body).toContain('--bg: #F7F5F0');
+    expect(body).toContain('--text: #3D6A7E');
     expect(body).toContain('--border: #D9CDC1');
   });
 });
