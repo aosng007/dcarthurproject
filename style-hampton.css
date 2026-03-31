@@ -665,6 +665,17 @@ section { padding: 80px 64px; }
   margin-top: 32px;
 }
 
+.experience-cards .about-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-left: 3px solid var(--navy-mid);
+  border-radius: 6px;
+}
+
+.experience-cards .about-card:hover {
+  background: var(--bg-off);
+}
+
 .about-visual {
   background: none;
   padding: 0;

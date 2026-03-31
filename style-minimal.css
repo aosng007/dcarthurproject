@@ -643,6 +643,16 @@ section { padding: 120px 64px; }
   margin-top: 32px;
 }
 
+.experience-cards .about-card {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  background: var(--bg);
+}
+
+.experience-cards .about-card:hover {
+  background: var(--bg-off);
+}
+
 .about-visual {
   background: none;
   padding: 0;

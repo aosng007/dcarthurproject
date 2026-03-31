@@ -565,16 +565,6 @@ section { padding: 96px 48px; }
 
 .about-right { padding-top: 60px; }
 
-/* ── EXPERIENCE ── */
-.experience { background: var(--warm-white); }
-
-.experience-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  margin-top: 32px;
-}
-
 .about-visual {
   background: var(--navy);
   padding: 48px 40px;
@@ -1212,13 +1202,6 @@ footer {
 /* ─────────────────────────────────────────────────────────────────────────
    RESPONSIVE
    ───────────────────────────────────────────────────────────────────────── */
-
-@media (min-width: 1024px) {
-  .experience-cards {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-}
 
 @media (max-width: 900px) {
   nav { padding: 0 24px; }
