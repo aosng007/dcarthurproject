@@ -81,7 +81,7 @@ test.describe('Our Experience section', () => {
 
   test('Our Experience section is present on about page', async ({ page }) => {
     await expect(page.locator('#experience')).toBeVisible();
-    await expect(page.locator('#experience h2')).toHaveText('Our Experience');
+    await expect(page.locator('#experience h2')).toHaveText('Our Experience.');
   });
 
   test('Our Experience section has four cards', async ({ page }) => {
