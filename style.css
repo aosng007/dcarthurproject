@@ -565,6 +565,16 @@ section { padding: 96px 48px; }
 
 .about-right { padding-top: 60px; }
 
+/* ── EXPERIENCE ── */
+.experience { background: var(--warm-white); }
+
+.experience-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+
 .about-visual {
   background: var(--navy);
   padding: 48px 40px;
@@ -1226,6 +1236,8 @@ footer {
 
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-right { padding-top: 0; }
+
+  .experience-cards { grid-template-columns: 1fr; }
 
   .services-header { grid-template-columns: 1fr; gap: 16px; }
   .services-grid { grid-template-columns: 1fr 1fr; }
