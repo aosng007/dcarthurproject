@@ -656,7 +656,7 @@ section { padding: 80px 64px; }
 .about-right { padding-top: 0; }
 
 /* ── EXPERIENCE ── */
-.experience { background: var(--warm-white); }
+.experience { background: var(--bg-off); }
 
 .experience-cards {
   display: grid;
