@@ -649,10 +649,6 @@ section { padding: 120px 64px; }
   background: var(--bg);
 }
 
-.experience-cards .about-card:hover {
-  background: var(--bg-off);
-}
-
 .about-visual {
   background: none;
   padding: 0;
