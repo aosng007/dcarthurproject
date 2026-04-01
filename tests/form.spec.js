@@ -74,6 +74,29 @@ test.describe('Contact form (Formspree)', () => {
   });
 });
 
+test.describe('Our Experience section', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/about.html');
+  });
+
+  test('Our Experience section is present on about page', async ({ page }) => {
+    await expect(page.locator('#experience')).toBeVisible();
+    await expect(page.locator('#experience h2')).toHaveText('Our Experience.');
+  });
+
+  test('Our Experience section has four cards', async ({ page }) => {
+    await expect(page.locator('#experience .about-card')).toHaveCount(4);
+  });
+
+  test('Our Experience cards contain correct content', async ({ page }) => {
+    const cards = page.locator('#experience .about-card');
+    await expect(cards.nth(0).locator('h3')).toHaveText('House Flipping');
+    await expect(cards.nth(1).locator('h3')).toHaveText('Townhouse');
+    await expect(cards.nth(2).locator('h3')).toHaveText('Residential Apartment');
+    await expect(cards.nth(3).locator('h3')).toHaveText('Land Subdivision');
+  });
+});
+
 test.describe('Theme switcher — three-way toggle', () => {
   test.beforeEach(async ({ page }) => {
     // Clear localStorage so each test starts from the default (minimal) theme
