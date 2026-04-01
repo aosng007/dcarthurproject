@@ -1382,14 +1382,7 @@ footer {
 
 /* ── STYLE SWITCHER (temporary preview widget) ── */
 .style-switcher {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
+  display: none !important;
 }
 .style-switcher-label {
   font-family: 'Montserrat', sans-serif;
