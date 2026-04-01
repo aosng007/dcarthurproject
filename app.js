@@ -41,33 +41,13 @@
   document.querySelectorAll('.fade-up').forEach(function (el) { observer.observe(el); });
 })();
 
-// Style Switcher
+// Style Switcher — disabled: Hampton theme is locked as the exclusive site theme.
+// Any previously saved theme preference is overridden so the site always loads Hampton.
 (function () {
   var sheet = document.getElementById('theme-stylesheet');
-  var btn = document.getElementById('style-switcher-btn');
-  if (!sheet || !btn) return;
-  var themes = ['style-minimal.css', 'style-corporate.css', 'style-hampton.css'];
-  var labels = ['Minimal', 'Corporate', 'Hampton'];
-  var saved = localStorage.getItem('dcap-theme');
-  if (saved && themes.indexOf(saved) !== -1) sheet.setAttribute('href', saved);
-  function currentIndex() {
-    var href = sheet.getAttribute('href');
-    for (var i = 0; i < themes.length; i++) {
-      if (href === themes[i] || href.endsWith('/' + themes[i])) return i;
-    }
-    return 0;
-  }
-  function updateBtn() {
-    var next = (currentIndex() + 1) % themes.length;
-    btn.textContent = 'Switch to ' + labels[next];
-  }
-  updateBtn();
-  btn.addEventListener('click', function () {
-    var next = (currentIndex() + 1) % themes.length;
-    sheet.setAttribute('href', themes[next]);
-    localStorage.setItem('dcap-theme', themes[next]);
-    updateBtn();
-  });
+  if (!sheet) return;
+  sheet.setAttribute('href', 'style-hampton.css');
+  localStorage.removeItem('dcap-theme');
 })();
 
 // Home page: transparent nav becomes solid on scroll

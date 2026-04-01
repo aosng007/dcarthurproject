@@ -97,62 +97,30 @@ test.describe('Our Experience section', () => {
   });
 });
 
-test.describe('Theme switcher — three-way toggle', () => {
+test.describe('Hampton theme — locked as default', () => {
   test.beforeEach(async ({ page }) => {
-    // Clear localStorage so each test starts from the default (minimal) theme
     await page.goto('/');
-    await page.evaluate(() => localStorage.removeItem('dcap-theme'));
-    await page.reload();
   });
 
-  test('switch button is visible on the home page', async ({ page }) => {
-    await expect(page.locator('#style-switcher-btn')).toBeVisible();
-  });
-
-  test('default theme is minimal and button offers Corporate next', async ({ page }) => {
-    const btn = page.locator('#style-switcher-btn');
-    await expect(btn).toHaveText(/Corporate/i);
-    const href = await page.locator('#theme-stylesheet').getAttribute('href');
-    expect(href).toContain('minimal');
-  });
-
-  test('first click switches to Corporate theme', async ({ page }) => {
-    await page.locator('#style-switcher-btn').click();
-    const href = await page.locator('#theme-stylesheet').getAttribute('href');
-    expect(href).toContain('corporate');
-    await expect(page.locator('#style-switcher-btn')).toHaveText(/Hampton/i);
-  });
-
-  test('second click switches to Hampton theme', async ({ page }) => {
-    await page.locator('#style-switcher-btn').click(); // → Corporate
-    await page.locator('#style-switcher-btn').click(); // → Hampton
+  test('default theme is Hampton (style-hampton.css)', async ({ page }) => {
     const href = await page.locator('#theme-stylesheet').getAttribute('href');
     expect(href).toContain('hampton');
-    await expect(page.locator('#style-switcher-btn')).toHaveText(/Minimal/i);
   });
 
-  test('third click cycles back to Minimal theme', async ({ page }) => {
-    await page.locator('#style-switcher-btn').click(); // → Corporate
-    await page.locator('#style-switcher-btn').click(); // → Hampton
-    await page.locator('#style-switcher-btn').click(); // → Minimal
+  test('theme switcher button is not present in the DOM', async ({ page }) => {
+    await expect(page.locator('#style-switcher-btn')).toHaveCount(0);
+  });
+
+  test('Hampton theme is active after page reload regardless of any prior localStorage value', async ({ page }) => {
+    await page.evaluate(() => localStorage.setItem('dcap-theme', 'style-minimal.css'));
+    await page.reload();
     const href = await page.locator('#theme-stylesheet').getAttribute('href');
-    expect(href).toContain('minimal');
-    await expect(page.locator('#style-switcher-btn')).toHaveText(/Corporate/i);
+    expect(href).toContain('hampton');
   });
 
-  test('Hampton theme selection is persisted to localStorage', async ({ page }) => {
-    await page.locator('#style-switcher-btn').click(); // → Corporate
-    await page.locator('#style-switcher-btn').click(); // → Hampton
+  test('localStorage dcap-theme key is cleared by app.js on load', async ({ page }) => {
     const stored = await page.evaluate(() => localStorage.getItem('dcap-theme'));
-    expect(stored).toContain('hampton');
-  });
-
-  test('Hampton theme is restored on page reload', async ({ page }) => {
-    await page.locator('#style-switcher-btn').click(); // → Corporate
-    await page.locator('#style-switcher-btn').click(); // → Hampton
-    await page.reload();
-    const href = await page.locator('#theme-stylesheet').getAttribute('href');
-    expect(href).toContain('hampton');
+    expect(stored).toBeNull();
   });
 
   test('style-hampton.css file is served and contains Hampton custom properties', async ({ page }) => {
