@@ -119,6 +119,8 @@ test.describe('Hampton theme — locked as default', () => {
   });
 
   test('localStorage dcap-theme key is cleared by app.js on load', async ({ page }) => {
+    await page.evaluate(() => localStorage.setItem('dcap-theme', 'style-minimal.css'));
+    await page.reload();
     const stored = await page.evaluate(() => localStorage.getItem('dcap-theme'));
     expect(stored).toBeNull();
   });

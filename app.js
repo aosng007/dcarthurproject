@@ -47,7 +47,13 @@
   var sheet = document.getElementById('theme-stylesheet');
   if (!sheet) return;
   sheet.setAttribute('href', 'style-hampton.css');
-  localStorage.removeItem('dcap-theme');
+  try {
+    if (window.localStorage) {
+      window.localStorage.removeItem('dcap-theme');
+    }
+  } catch (e) {
+    // Ignore storage errors so other JS continues to work
+  }
 })();
 
 // Home page: transparent nav becomes solid on scroll
